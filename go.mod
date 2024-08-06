@@ -1,4 +1,4 @@
-module github-roaster
+module github-praiser
 
 go 1.22.4
 
