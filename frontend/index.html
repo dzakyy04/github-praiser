@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        #response {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Request Example</h1>
+    <button id="requestButton">Get Praising</button>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('requestButton').addEventListener('click', function() {
+            fetch('https://praise.hmifunsri.com/praising', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: 'dzakyy04' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('response').innerText = data.data.praising;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('response').innerText = 'An error occurred. Please try again later.';
+            });
+        });
+    </script>
+</body>
+</html>
